@@ -1,8 +1,10 @@
 import MainLayouts from "../Layouts/MainLayouts";
-import {
-    createBrowserRouter,
-  } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Home from "../Pages/Home/Home";
+import AddBlogs from "../Pages/AddBlogs/AddBlogs";
+import Wishlist from "../Pages/Wishlist/Wishlist";
+import FeaturedBlogs from "../Pages/FeaturedBlogs/FeaturedBlogs";
+import AllBlogs from "../Pages/AllBlogs/AllBlogs";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -11,6 +13,22 @@ const router = createBrowserRouter([
         {
             path: '/',
             element: <Home></Home>,
+        },
+        {
+          path:'/addBlogs',
+          element: <AddBlogs></AddBlogs>,
+        },
+        {
+          path:'/allBlogs',
+          element: <AllBlogs></AllBlogs>,
+        },
+        {
+          path:'/featuredBlogs',
+          element: <FeaturedBlogs></FeaturedBlogs>,
+        },
+        {
+          path:'/wishlist',
+          element: <Wishlist></Wishlist>,
         },
       ]
     },
