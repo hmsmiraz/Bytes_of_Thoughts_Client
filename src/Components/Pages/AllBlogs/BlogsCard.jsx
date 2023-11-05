@@ -6,7 +6,7 @@ const BlogsCard = ({ Blog }) => {
   //   console.log(title);
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card bg-base-100 shadow-xl">
         <figure>
           <img src={picture} alt="Album" className="h-60 w-72 rounded-xl" />
         </figure>

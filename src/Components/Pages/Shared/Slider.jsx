@@ -1,6 +1,6 @@
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-
+import { motion } from "framer-motion";
 const Slider = () => {
   const spanStyle = {
     width: "800px",
@@ -10,10 +10,11 @@ const Slider = () => {
     textAlign: "center", // Center the text horizontally
     fontWeight: "bold",
     fontSize: "42px",
-    background: '-webkit-linear-gradient(45deg, #00c3ff, #ff99cc, #ff6699), rgba(255, 255, 255, 0.2)',// Gradient background with a light background
-    WebkitBackgroundClip: 'text',  // Clip text to background
-    WebkitTextFillColor: 'white', // Hide original text color
-    display: 'inline-block',
+    background:
+      "-webkit-linear-gradient(45deg, #00c3ff, #ff99cc, #ff6699), rgba(255, 255, 255, 0.2)", // Gradient background with a light background
+    WebkitBackgroundClip: "text", // Clip text to background
+    WebkitTextFillColor: "white", // Hide original text color
+    display: "inline-block",
   };
 
   const divStyle = {
@@ -22,8 +23,8 @@ const Slider = () => {
     justifyContent: "center",
     backgroundSize: "cover",
     height: "700px",
-    borderRadius: '2%',
-    margin:"2px",
+    borderRadius: "2%",
+    margin: "2px",
   };
   const slideImages = [
     {
@@ -42,6 +43,21 @@ const Slider = () => {
   ];
   return (
     <div className="slide-container my-5">
+      {/* <motion.div
+      className="box"
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 50,
+        ease: [0, 0.71, 0.2, 1.01]
+      }}
+    /> */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+      />
       <Slide>
         {slideImages.map((slideImage, index) => (
           <div key={index}>
