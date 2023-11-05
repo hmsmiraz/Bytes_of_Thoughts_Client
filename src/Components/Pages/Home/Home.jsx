@@ -1,9 +1,13 @@
+import Slider from "../Shared/Slider";
+import BestAuthors from "./BestAuthors";
+import NewsLetter from "./NewsLetter";
 
 const Home = () => {
     return (
         <div>
-            <h2 className='font-bold text-center text-5xl'>This is Home</h2>
-            
+            <Slider></Slider>
+            <NewsLetter></NewsLetter>
+            <BestAuthors></BestAuthors>
         </div>
     );
 };
