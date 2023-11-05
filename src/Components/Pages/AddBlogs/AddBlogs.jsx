@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const AddBlogs = () => {
   const handleAddBlog = (event) => {
     event.preventDefault();
@@ -13,9 +15,29 @@ const AddBlogs = () => {
     const newBlog = {
         title, category, date, shortDescription, longDescription, picture
     };
-    console.log(newBlog)
+    console.log(newBlog);
 
-    
+    fetch("http://localhost:5000/blogs", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newBlog),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Blog Added Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+          event.target.reset();
+        }
+      });
+     // navigate(location?.state ? location.state : "/");
   };
   return (
     <div>
