@@ -6,7 +6,7 @@ const WishlistCard = ({ blogs, blogAll, setBlogAll }) => {
   const name = title.slice(0, 30);
   const text = shortDescription.slice(0, 120);
 
-  const handleRemove = (_id) => {
+  const handleRemove = _id => {
     //console.log(_id);
     Swal.fire({
       title: "Are you sure?",
@@ -16,24 +16,26 @@ const WishlistCard = ({ blogs, blogAll, setBlogAll }) => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`http://localhost:5000/wishlist/${_id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your Blog has been deleted.", "Success");
-              const remaining = blogAll.filter((item) => item._id !== _id);
-              setBlogAll(remaining);
-            }
-          });
-      }
-    }).then(error=>{
-        console.log(error)
     })
+      .then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:5000/wishlist/${_id}`, {
+            method: 'DELETE'
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.deletedCount > 0) {
+                Swal.fire("Deleted!", "Your Blog has been deleted.", "Success");
+                const remaining = blogAll.filter((item) => item._id !== _id);
+                setBlogAll(remaining);
+              }
+            });
+        }
+      })
+      // .then((error) => {
+      //   console.log(error);
+      // });
   };
   //console.log(title);
   return (

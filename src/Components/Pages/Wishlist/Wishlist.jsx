@@ -18,7 +18,7 @@ const Wishlist = () => {
           This is Your Wishlist Blogs:
         </h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6  mx-2">
         {filteredWishlist.map((blogs) => (
           <WishlistCard
             key={blogs._id}
