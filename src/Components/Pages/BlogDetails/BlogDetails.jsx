@@ -1,5 +1,4 @@
 //import Swal from "sweetalert2";
-
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import { Link, useLoaderData } from "react-router-dom";
@@ -36,9 +35,9 @@ const BlogDetails = () => {
             </p>
             <div className="card-actions justify-end">
               <div>
-                <Link to={"/"}>
-                  <button className="btn btn-info ">Update</button>
-                </Link>
+                <Link to={`/blogs/${_id}`}>
+                  <button className="btn btn-info">Update</button>
+                </Link> 
               </div>
               <div>
                 <button className="btn btn-accent">Comment</button>
