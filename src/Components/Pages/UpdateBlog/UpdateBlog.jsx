@@ -16,6 +16,7 @@ const UpdateBlog = () => {
     shortDescription,
     picture,
     longDescription,
+    authorEmail,
   } = blogSingle;
 
   const handleUpdateBlog = (event) => {
@@ -28,6 +29,7 @@ const UpdateBlog = () => {
     const shortDescription = form.shortDescription.value;
     const longDescription = form.longDescription.value;
     const picture = form.picture.value;
+    const authorEmail = form.authorEmail.value;
 
     const updateBlog = {
       title,
@@ -36,6 +38,7 @@ const UpdateBlog = () => {
       shortDescription,
       longDescription,
       picture,
+      authorEmail,
     };
     console.log(updateBlog);
     // send data to the server
@@ -121,6 +124,19 @@ const UpdateBlog = () => {
                       required
                     />
                   </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Author Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="authorEmail"
+                      placeholder="Email"
+                      defaultValue={authorEmail}
+                      className="input input-bordered"
+                      required
+                    />
+                  </div>
                 </div>
                 {/* 2nd col */}
                 <div>
@@ -163,15 +179,16 @@ const UpdateBlog = () => {
                       required
                     />
                   </div>
-                </div>
-              </div>
-              <div className="mt-2">
+                  <div className="mt-9">
                 <input
                   type="submit"
                   value="Update Blog"
                   className="btn btn-neutral w-full"
                 />
               </div>
+                </div>
+              </div>
+
             </form>
           </div>
         </div>

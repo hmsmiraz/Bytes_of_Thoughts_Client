@@ -11,9 +11,16 @@ const AddBlogs = () => {
     const shortDescription = form.shortDescription.value;
     const longDescription = form.longDescription.value;
     const picture = form.picture.value;
+    const authorEmail = form.authorEmail.value;
 
     const newBlog = {
-        title, category, date, shortDescription, longDescription, picture
+      title,
+      category,
+      date,
+      shortDescription,
+      longDescription,
+      picture,
+      authorEmail,
     };
     console.log(newBlog);
 
@@ -37,7 +44,7 @@ const AddBlogs = () => {
           event.target.reset();
         }
       });
-     // navigate(location?.state ? location.state : "/");
+    // navigate(location?.state ? location.state : "/");
   };
   return (
     <div>
@@ -74,9 +81,7 @@ const AddBlogs = () => {
                       id=""
                       required
                     >
-                      <option value="">
-                      Select a Category
-                      </option>
+                      <option value="">Select a Category</option>
                       <option value="Motivation">Motivation</option>
                       <option value="Software">Software</option>
                       <option value="Programming">Programming</option>
@@ -92,6 +97,18 @@ const AddBlogs = () => {
                       type="date"
                       name="date"
                       placeholder="Date"
+                      className="input input-bordered"
+                      required
+                    />
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Author Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="authorEmail"
+                      placeholder="Email"
                       className="input input-bordered"
                       required
                     />
@@ -135,14 +152,14 @@ const AddBlogs = () => {
                       required
                     />
                   </div>
+                  <div className="mt-9">
+                    <input
+                      type="submit"
+                      value="Add Blog"
+                      className="btn btn-neutral w-full"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="mt-2">
-                <input
-                  type="submit"
-                  value="Add Blog"
-                  className="btn btn-neutral w-full"
-                />
               </div>
             </form>
           </div>
