@@ -46,7 +46,8 @@ const BlogDetails = () => {
     const form = event.target;
     const name = user?.displayName;
     const comment = form.comment.value;
-    const newComment = { blogId, userEmail, name, comment };
+    const photo = user?.photoURL;
+    const newComment = { blogId, userEmail, name, comment, photo };
     //console.log(newComment);
     fetch("http://localhost:5000/comments", {
       method: "POST",
@@ -138,8 +139,8 @@ const BlogDetails = () => {
           {/* head */}
           <thead>
             <tr>
-              <th>Email</th>
               <th>Name</th>
+              <th>User Photo</th>
               <th>Comment</th>
             </tr>
           </thead>
