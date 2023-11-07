@@ -9,6 +9,7 @@ import {
   signOut,
 } from "Firebase/auth";
 import { GoogleAuthProvider } from "Firebase/auth";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -46,14 +47,37 @@ const AuthProviders = ({ children }) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
       console.log("User auth state changed", currentUser);
       setUser(currentUser);
+      const loggedUser = { email: userEmail };
       setLoading(false);
+      if (currentUser) {
+        axios
+          .post("http://localhost:5000/jwt", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log("Token response", res.data);
+          });
+      } else {
+        axios
+          .post(
+            "http://localhost:5000/logout",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
     });
     return () => {
-      unSubscribe();
+      return unSubscribe();
     };
-  }, []);
+  });
   const authInfo = {
     user,
     loading,

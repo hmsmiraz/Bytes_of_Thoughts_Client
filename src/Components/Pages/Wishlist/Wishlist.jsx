@@ -1,16 +1,22 @@
-import { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+
 import { AuthContext } from "../../../Providers/AuthProviders";
 import WishlistCard from "./WishlistCard";
 
 const Wishlist = () => {
-  const wishlistBlogs = useLoaderData();
-  const [blogAll, setBlogAll] = useState(wishlistBlogs);
+  //const wishlistBlogs = useLoaderData();
+  const [blogAll, setBlogAll] = useState([]);
   const { user } = useContext(AuthContext);
   const email = user?.email;
-  const filteredWishlist = blogAll.filter(
-    (wishlistBlog) => wishlistBlog.email == email
-  );
+  const url = `http://localhost:5000/wishlist?email=${user?.email}`
+  useEffect(()=>{
+    fetch(url, {credentials: 'include'})
+    .then(res=>res.json())
+    .then(data=>setBlogAll(data))
+  },[url])
+  // const filteredWishlist = blogAll.filter(
+  //   (wishlistBlog) => wishlistBlog.email == email
+  // );
   return (
     <div>
       <div className="my-10">
@@ -19,7 +25,7 @@ const Wishlist = () => {
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6  mx-2">
-        {filteredWishlist.map((blogs) => (
+        {blogAll.map((blogs) => (
           <WishlistCard
             key={blogs._id}
             blogs={blogs}
