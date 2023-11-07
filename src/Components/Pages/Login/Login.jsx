@@ -144,8 +144,8 @@ const Login = () => {
             Register
           </Link>
         </p>
-        <p className="text-center my-2">
-          <button onClick={handleGoogleLogin} className="btn btn-primary">
+        <p className="text-center my-2 font-bold">
+          <button onClick={handleGoogleLogin} className="btn btn-info">
             Google
           </button>
         </p>

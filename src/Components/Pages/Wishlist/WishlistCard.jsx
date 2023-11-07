@@ -24,8 +24,8 @@ const WishlistCard = ({ blogs, blogAll, setBlogAll }) => {
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(_id)
-              console.log(data);
+              //console.log(_id)
+              //console.log(data);
               if (data.deletedCount > 0) {
                 Swal.fire({
                   title: "Success!",
