@@ -42,6 +42,7 @@ const router = createBrowserRouter([
         {
           path:'/featuredBlogs',
           element: <FeaturedBlogs></FeaturedBlogs>,
+          loader: () => fetch("http://localhost:5000/blogs"),
         },
         {
           path:'/wishlist',

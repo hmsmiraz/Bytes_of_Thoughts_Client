@@ -14,13 +14,12 @@ const BlogsCard = ({ Blog }) => {
   const handleWishlist = () => {
     const addBlogWishlist = {
       email,
-      _id,
       title,
       category,
       shortDescription,
       picture,
     };
-    console.log(addBlogWishlist)
+    //console.log(addBlogWishlist)
     fetch("http://localhost:5000/wishlist", {
       method: "POST",
       headers: {

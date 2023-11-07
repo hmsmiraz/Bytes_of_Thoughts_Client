@@ -24,9 +24,15 @@ const WishlistCard = ({ blogs, blogAll, setBlogAll }) => {
           })
             .then((res) => res.json())
             .then((data) => {
+              console.log(_id)
               console.log(data);
               if (data.deletedCount > 0) {
-                Swal.fire("Deleted!", "Your Blog has been deleted.", "Success");
+                Swal.fire({
+                  title: "Success!",
+                  text: "Blog Deleted Successfully",
+                  icon: "success",
+                  confirmButtonText: "Cool",
+                });
                 const remaining = blogAll.filter((item) => item._id !== _id);
                 setBlogAll(remaining);
               }

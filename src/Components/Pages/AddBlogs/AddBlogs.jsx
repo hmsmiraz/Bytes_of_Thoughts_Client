@@ -13,6 +13,11 @@ const AddBlogs = () => {
     const picture = form.picture.value;
     const authorEmail = form.authorEmail.value;
 
+    const longDesLengthArr = longDescription.trim().split(/\s+/);
+    const longDescriptionWords = longDesLengthArr.length;
+    console.log(longDescriptionWords);
+    
+
     const newBlog = {
       title,
       category,
@@ -21,6 +26,7 @@ const AddBlogs = () => {
       longDescription,
       picture,
       authorEmail,
+      longDescriptionWords,
     };
     console.log(newBlog);
 

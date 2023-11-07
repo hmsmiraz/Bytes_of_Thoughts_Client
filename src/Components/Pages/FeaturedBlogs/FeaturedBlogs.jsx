@@ -1,22 +1,35 @@
-import { useState, useEffect } from "react";
-import Axios from "axios";
+import { useEffect, useState } from "react";
+
+import { useLoaderData } from "react-router-dom";
 
 const FeaturedBlogs = () => {
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    async function fetchPosts() {
-      const response = await Axios.get("http://localhost:5000/blogs");
-      setPosts(response.data);
-    }
+  const blogs = useLoaderData();
+  const [posts, setPosts] = useState(blogs);
 
-    fetchPosts();
-  }, []);
-  console.log(posts);
-  const longDescription = posts.find(
-    (post) => post.longDescription == longDescription
+  const sortedData = posts.slice().sort((a, b) => a.longDescriptionWords - b.longDescriptionWords);
+
+  // function sortByLongDescriptionWordCount(posts) {
+  //   return posts.sort(
+  //     (a, b) => b.longDescription - a.longDescription
+  //   );
+  // }
+  // console.log(sortByLongDescriptionWordCount(posts));
+
+  // useEffect(() => {
+  //   const sortedPosts = sortByLongDescriptionWordCount(blogs);
+  //   setPosts(sortedPosts);
+  // }, [blogs]);
+
+  return (
+    <ul>
+      {sortedData.map((post) => (
+        <li key={post._id}>
+          <h2>{post.title}</h2>
+          <p>{post.content}</p>
+        </li>
+      ))}
+    </ul>
   );
-  console.log(longDescription);
-  return <div></div>;
 };
 
 export default FeaturedBlogs;
