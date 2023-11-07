@@ -14,11 +14,11 @@ const FeaturedBlogs = () => {
     ...item,
     serialNumber: index + 1,
   }));
-  console.log(dataWithSerialNumbers);
+  //console.log(dataWithSerialNumbers);
   const columns = [
     {
       name: "Serial Number",
-      selector: "serialNumber", // You should provide the appropriate field from your data
+      selector: "serialNumber", 
       sortable: true,
     },
     {
@@ -28,12 +28,12 @@ const FeaturedBlogs = () => {
     },
     {
       name: "Blog Owner",
-      selector: "blogOwner", // Replace with the actual field name from your data
+      selector: "blogOwner", 
     },
     {
       name: "Blog Owner Profile Picture",
       cell: (row) => (
-        <img src={row.blogOwnerProfilePicture} alt={row.blogOwner} width="50" />
+        <img src={row.blogOwnerProfilePicture} alt={row.blogOwner} width="40" style={{ borderRadius: '50%' }} />
       ),
       sortable: false,
     },
@@ -42,7 +42,7 @@ const FeaturedBlogs = () => {
       selector: "longDescriptionWords",
       sortable: true,
     },
-    // Add more columns as needed
+  
   ];
 
   return (

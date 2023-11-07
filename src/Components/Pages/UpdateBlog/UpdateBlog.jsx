@@ -17,6 +17,8 @@ const UpdateBlog = () => {
     picture,
     longDescription,
     authorEmail,
+    blogOwner,
+    blogOwnerProfilePicture,
   } = blogSingle;
 
   const handleUpdateBlog = (event) => {
@@ -30,6 +32,8 @@ const UpdateBlog = () => {
     const longDescription = form.longDescription.value;
     const picture = form.picture.value;
     const authorEmail = form.authorEmail.value;
+    const blogOwner = form.blogOwner.value;
+    const blogOwnerProfilePicture = form.blogOwnerProfilePicture.value;
 
     const updateBlog = {
       title,
@@ -39,19 +43,18 @@ const UpdateBlog = () => {
       longDescription,
       picture,
       authorEmail,
+      blogOwner,
+      blogOwnerProfilePicture,
     };
     console.log(updateBlog);
     // send data to the server
-    fetch(
-      `http://localhost:5000/blogs/${_id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(updateBlog),
-      }
-    )
+    fetch(`http://localhost:5000/blogs/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateBlog),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -137,6 +140,19 @@ const UpdateBlog = () => {
                       required
                     />
                   </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Author Name</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="blogOwner"
+                      placeholder="Blog Owner Name"
+                      className="input input-bordered"
+                      defaultValue={blogOwner}
+                      required
+                    />
+                  </div>
                 </div>
                 {/* 2nd col */}
                 <div>
@@ -179,16 +195,28 @@ const UpdateBlog = () => {
                       required
                     />
                   </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Author Picture Url</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="blogOwnerProfilePicture"
+                      placeholder="Picture URL"
+                      className="input input-bordered"
+                      defaultValue={blogOwnerProfilePicture}
+                      required
+                    />
+                  </div>
                   <div className="mt-9">
-                <input
-                  type="submit"
-                  value="Update Blog"
-                  className="btn btn-neutral w-full"
-                />
-              </div>
+                    <input
+                      type="submit"
+                      value="Update Blog"
+                      className="btn btn-neutral w-full"
+                    />
+                  </div>
                 </div>
               </div>
-
             </form>
           </div>
         </div>

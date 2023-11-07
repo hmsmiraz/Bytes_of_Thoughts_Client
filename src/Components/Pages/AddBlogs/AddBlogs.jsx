@@ -12,6 +12,8 @@ const AddBlogs = () => {
     const longDescription = form.longDescription.value;
     const picture = form.picture.value;
     const authorEmail = form.authorEmail.value;
+    const blogOwner = form.blogOwner.value;
+    const blogOwnerProfilePicture = form.blogOwnerProfilePicture.value;
 
     const longDesLengthArr = longDescription.trim().split(/\s+/);
     const longDescriptionWords = longDesLengthArr.length;
@@ -27,6 +29,9 @@ const AddBlogs = () => {
       picture,
       authorEmail,
       longDescriptionWords,
+      blogOwner,
+      blogOwnerProfilePicture,
+
     };
     console.log(newBlog);
 
@@ -119,6 +124,18 @@ const AddBlogs = () => {
                       required
                     />
                   </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Author Name</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="blogOwner"
+                      placeholder="Blog Owner Name"
+                      className="input input-bordered"
+                      required
+                    />
+                  </div>
                 </div>
                 {/* 2nd col */}
                 <div>
@@ -148,11 +165,23 @@ const AddBlogs = () => {
                   </div>
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">Picture</span>
+                      <span className="label-text">Blog Picture Url</span>
                     </label>
                     <input
                       type="text"
                       name="picture"
+                      placeholder="Picture URL"
+                      className="input input-bordered"
+                      required
+                    />
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Author Picture Url</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="blogOwnerProfilePicture"
                       placeholder="Picture URL"
                       className="input input-bordered"
                       required
