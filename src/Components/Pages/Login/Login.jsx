@@ -23,7 +23,7 @@ const Login = () => {
       };
       // update last logged at in the database
       fetch(
-        "http://localhost:5000/users",
+        "https://bytes-of-thoughts-server.vercel.app/users",
         {
           method: "PATCH",
           headers: {
@@ -42,7 +42,7 @@ const Login = () => {
         icon: "success",
         confirmButtonText: "Cool",
       });
-     // navigate(location?.state ? location.state : "/");
+     navigate(location?.state ? location.state : "/");
     })
     .catch((error) => {
       console.error(error);
@@ -75,7 +75,7 @@ const Login = () => {
         uid : uid,
       };
       fetch(
-        "http://localhost:5000/users",
+        "https://bytes-of-thoughts-server.vercel.app/users",
         {
           method: "POST",
           headers: {
@@ -88,7 +88,7 @@ const Login = () => {
         .then((data) => {
           console.log(data);
         });
-      //navigate(location?.state ? location.state : "/");
+      navigate(location?.state ? location.state : "/");
     })
     .catch((error) => {
       console.log(error);

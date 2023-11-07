@@ -35,7 +35,7 @@ const AddBlogs = () => {
     };
     console.log(newBlog);
 
-    fetch("http://localhost:5000/blogs", {
+    fetch("https://bytes-of-thoughts-server.vercel.app/blogs", {
       method: "POST",
       headers: {
         "content-type": "application/json",

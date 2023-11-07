@@ -29,7 +29,7 @@ const BlogDetails = () => {
   //   }
 
   useEffect(() => {
-    fetch("http://localhost:5000/comments")
+    fetch("https://bytes-of-thoughts-server.vercel.app/comments")
       .then((res) => res.json())
       .then((data) => setAllComments(data));
   }, []);
@@ -49,7 +49,7 @@ const BlogDetails = () => {
     const photo = user?.photoURL;
     const newComment = { blogId, userEmail, name, comment, photo };
     //console.log(newComment);
-    fetch("http://localhost:5000/comments", {
+    fetch("https://bytes-of-thoughts-server.vercel.app/comments", {
       method: "POST",
       headers: {
         "content-type": "application/json",

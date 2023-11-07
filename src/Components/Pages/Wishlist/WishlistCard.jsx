@@ -19,7 +19,7 @@ const WishlistCard = ({ blogs, blogAll, setBlogAll }) => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/wishlist/${_id}`, {
+          fetch(`https://bytes-of-thoughts-server.vercel.app/wishlist/${_id}`, {
             method: 'DELETE'
           })
             .then((res) => res.json())
@@ -59,7 +59,7 @@ const WishlistCard = ({ blogs, blogAll, setBlogAll }) => {
           <p className="badge badge-info">{category}</p>
           <p>{text}...</p>
           <div className="card-actions justify-center">
-            <Link to={`/allBlogs/${_id}`}>
+          <Link to={`/allBlogs/${_id}`}>
               <button className="btn bg-emerald-600 text-white">Details</button>
             </Link>
             <button

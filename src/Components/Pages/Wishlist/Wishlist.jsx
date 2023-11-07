@@ -10,7 +10,7 @@ const Wishlist = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
   const email = user?.email;
-  const url = `http://localhost:5000/wishlist?email=${user?.email}`
+  const url = `https://bytes-of-thoughts-server.vercel.app/wishlist?email=${user?.email}`
   useEffect(()=>{
     axiosSecure.get(url)
     .then(res => {
@@ -19,7 +19,7 @@ const Wishlist = () => {
     // fetch(url, {credentials: 'include'})
     // .then(res=>res.json())
     // .then(data=>setBlogAll(data))
-  },[url])
+  },[url, axiosSecure])
   const filteredWishlist = blogAll.filter(
     (wishlistBlog) => wishlistBlog.email == email
   );

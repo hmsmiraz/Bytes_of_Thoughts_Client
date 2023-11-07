@@ -5,8 +5,8 @@ import { AuthContext } from "../../../Providers/AuthProviders";
 import Swal from "sweetalert2";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  // const location = useLocation();
-  // const navigate = useNavigate();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleSignOut = () => {
     logOut()
@@ -17,7 +17,7 @@ const Navbar = () => {
           icon: "success",
           confirmButtonText: "Cool",
         });
-        //navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch();
   };

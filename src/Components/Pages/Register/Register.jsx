@@ -9,9 +9,8 @@ const Register = () => {
 
   const { createUser } = useContext(AuthContext);
 
-
-//   const location = useLocation();
-//   const navigate = useNavigate();
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
 
@@ -24,21 +23,21 @@ const Register = () => {
     setRegisterError("");
     setSuccess("");
 
-    console.log(name, photo, email, password);
-    // if (password.length < 6) {
-    //   setRegisterError("Password should be at least 6 characters or longer");
-    //   return;
-    // } else if (!/[A-Z]/.test(password)) {
-    //   setRegisterError(
-    //     "Your password should have at least one upper case characters."
-    //   );
-    //   return;
-    // } else if (!/[!@#$%^&*()_+{}\[\]:;<>,.?/~\\-]/.test(password)) {
-    //   setRegisterError(
-    //     "Your password should have at least one special characters."
-    //   );
-    //   return;
-    // }
+    //console.log(name, photo, email, password);
+    if (password.length < 6) {
+      setRegisterError("Password should be at least 6 characters or longer");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setRegisterError(
+        "Your password should have at least one upper case characters."
+      );
+      return;
+    } else if (!/[!@#$%^&*()_+{}\[\]:;<>,.?/~\\-]/.test(password)) {
+      setRegisterError(
+        "Your password should have at least one special characters."
+      );
+      return;
+    }
 
     createUser(email, password)
       .then((result) => {
@@ -51,7 +50,7 @@ const Register = () => {
           createdAt: createdAt,
           uid: uid,
         };
-        fetch("http://localhost:5000/users", {
+        fetch("https://bytes-of-thoughts-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -76,13 +75,13 @@ const Register = () => {
               icon: "success",
               confirmButtonText: "Cool",
             });
-            //window.location.reload();
+            window.location.reload();
           })
           .catch((error) => {
             console.log(error);
             setRegisterError(error.message);
           });
-        //navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.error(error);

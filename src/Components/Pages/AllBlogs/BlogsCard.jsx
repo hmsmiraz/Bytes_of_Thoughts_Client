@@ -20,7 +20,7 @@ const BlogsCard = ({ Blog }) => {
       picture,
     };
     //console.log(addBlogWishlist)
-    fetch("http://localhost:5000/wishlist", {
+    fetch("https://bytes-of-thoughts-server.vercel.app/wishlist", {
       method: "POST",
       headers: {
         "content-type": "application/json",

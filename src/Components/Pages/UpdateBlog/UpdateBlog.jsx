@@ -48,7 +48,7 @@ const UpdateBlog = () => {
     };
     console.log(updateBlog);
     // send data to the server
-    fetch(`http://localhost:5000/blogs/${_id}`, {
+    fetch(`https://bytes-of-thoughts-server.vercel.app/blogs/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
