@@ -42,34 +42,34 @@ const Slider = () => {
     },
   ];
   return (
-    <div className="slide-container my-5">
-      {/* <motion.div
-      className="box"
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{
-        duration: 0.8,
-        delay: 50,
-        ease: [0, 0.71, 0.2, 1.01]
+    <motion.div
+      animate={{
+        opacity: 1,
+        y: 0,
       }}
-    /> */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      />
-      <Slide>
-        {slideImages.map((slideImage, index) => (
-          <div key={index}>
-            <div
-              style={{ ...divStyle, backgroundImage: `url(${slideImage.url})` }}
-            >
-              <span style={spanStyle}>{slideImage.caption}</span>
+      transition={{
+        ease: "linear",
+        duration: 2,
+        x: { duration: 1 }
+      }}
+    >
+      <div className="slide-container my-5">
+        <Slide>
+          {slideImages.map((slideImage, index) => (
+            <div key={index}>
+              <div
+                style={{
+                  ...divStyle,
+                  backgroundImage: `url(${slideImage.url})`,
+                }}
+              >
+                <span style={spanStyle}>{slideImage.caption}</span>
+              </div>
             </div>
-          </div>
-        ))}
-      </Slide>
-    </div>
+          ))}
+        </Slide>
+      </div>
+    </motion.div>
   );
 };
 

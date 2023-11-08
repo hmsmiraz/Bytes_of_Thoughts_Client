@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-const RecentBlogCard = ({ Blog}) => {
-    const { user } = useContext(AuthContext);
+const RecentBlogCard = ({ Blog }) => {
+  const { user } = useContext(AuthContext);
   const email = user?.email;
   //console.log(email)
   const { _id, title, category, shortDescription, picture } = Blog;
@@ -38,8 +38,8 @@ const RecentBlogCard = ({ Blog}) => {
         }
       });
   };
-    return (
-        <div>
+  return (
+    <div>
       <div className="card bg-base-100 shadow-xl">
         <figure>
           <img
@@ -66,7 +66,7 @@ const RecentBlogCard = ({ Blog}) => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default RecentBlogCard;

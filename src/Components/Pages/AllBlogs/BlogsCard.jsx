@@ -1,7 +1,9 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import Swal from "sweetalert2";
+import Skeleton from "react-loading-skeleton";
+
 const BlogsCard = ({ Blog }) => {
   const { user } = useContext(AuthContext);
   const email = user?.email;
@@ -9,6 +11,13 @@ const BlogsCard = ({ Blog }) => {
   const { _id, title, category, shortDescription, picture } = Blog;
   const name = title.slice(0, 30);
   const text = shortDescription.slice(0, 70);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
   //   console.log(text);
   //   console.log(title);
   const handleWishlist = () => {
@@ -42,31 +51,62 @@ const BlogsCard = ({ Blog }) => {
   };
   return (
     <div>
-      <div className="card bg-base-100 shadow-xl">
-        <figure>
-          <img
-            src={picture}
-            alt="Album"
-            className="h-60 w-72 rounded-xl mt-2"
-          />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title font-bold">{name}...</h2>
-          <h4>
-            <span className="font-semibold">Category</span>: {category}
-          </h4>
-          <p>{text}...</p>
-          <div className="card-actions justify-center">
-            <Link to={`/allBlogs/${_id}`}>
-              <button className="btn bg-emerald-600 text-white">Details</button>
-            </Link>
+      {isLoading ? (
+        <Skeleton className="card bg-base-100 shadow-xl">
+          <figure>
+            <Skeleton width="72" height="60" className="rounded-xl mt-2" />
+          </figure>
 
-            <button onClick={handleWishlist} className="btn btn-neutral">
-              Wishlist
-            </button>
+          <Skeleton className="card-body">
+            <Skeleton
+              width="100%"
+              height="20px"
+              className="card-title font-bold"
+            />
+
+            <Skeleton width="100%" height="15px" className="font-semibold">
+              Category
+            </Skeleton>
+
+            <Skeleton width="100%" height="30px" className="mb-2" />
+
+            <Skeleton
+              width="50%"
+              height="20px"
+              className="btn bg-emerald-600 text-white"
+            />
+            <Skeleton width="50%" height="20px" className="btn btn-neutral" />
+          </Skeleton>
+        </Skeleton>
+      ) : (
+        <div className="card bg-base-100 shadow-xl">
+          <figure>
+            <img
+              src={picture}
+              alt="Album"
+              className="h-60 w-72 rounded-xl mt-2"
+            />
+          </figure>
+          <div className="card-body">
+            <h2 className="card-title font-bold">{name}...</h2>
+            <h4>
+              <span className="font-semibold">Category</span>: {category}
+            </h4>
+            <p>{text}...</p>
+            <div className="card-actions justify-center">
+              <Link to={`/allBlogs/${_id}`}>
+                <button className="btn bg-emerald-600 text-white">
+                  Details
+                </button>
+              </Link>
+
+              <button onClick={handleWishlist} className="btn btn-neutral">
+                Wishlist
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

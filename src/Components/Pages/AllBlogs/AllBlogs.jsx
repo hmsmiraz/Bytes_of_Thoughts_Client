@@ -1,4 +1,3 @@
-
 import { useLoaderData } from "react-router-dom";
 import BlogsCard from "./BlogsCard";
 import { useState } from "react";
