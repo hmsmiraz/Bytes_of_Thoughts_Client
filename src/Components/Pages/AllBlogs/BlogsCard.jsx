@@ -18,10 +18,12 @@ const BlogsCard = ({ Blog }) => {
       setIsLoading(false);
     }, 1000);
   }, []);
-  //   console.log(text);
+  const blogId = _id;
+  // console.log(blogId);
   //   console.log(title);
   const handleWishlist = () => {
     const addBlogWishlist = {
+      blogId,
       email,
       title,
       category,

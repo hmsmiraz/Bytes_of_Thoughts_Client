@@ -10,6 +10,7 @@ const Home = () => {
             <RecentBlog></RecentBlog>
             <NewsLetter></NewsLetter>
             <BestAuthors></BestAuthors>
+
         </div>
     );
 };

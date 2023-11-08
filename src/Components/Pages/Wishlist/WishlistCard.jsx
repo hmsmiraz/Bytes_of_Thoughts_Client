@@ -1,10 +1,19 @@
+// import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const WishlistCard = ({ blogs, blogAll, setBlogAll }) => {
-  const { _id, title, category, shortDescription, picture } = blogs;
+  const { _id, blogId, title, category, shortDescription, picture } = blogs;
   const name = title.slice(0, 30);
   const text = shortDescription.slice(0, 120);
+
+  // const [allBlogs, setAllBlogs] = useState([]);
+  // useEffect(()=>{
+  //   fetch(`https://bytes-of-thoughts-server.vercel.app/blogs/${_id}`)
+  //   .then(res=>res.json())
+  //   .then(data=>setAllBlogs(data))
+  // },[_id])
+
 
   const handleRemove = _id => {
     //console.log(_id);
@@ -59,8 +68,8 @@ const WishlistCard = ({ blogs, blogAll, setBlogAll }) => {
           <p className="badge badge-info">{category}</p>
           <p>{text}...</p>
           <div className="card-actions justify-center">
-          <Link to={`/allBlogs/${_id}`}>
-              <button className="btn bg-emerald-600 text-white">Details</button>
+          <Link to={`/allBlogs/${blogId}`}>
+              <button className="btn bg-blue-500 text-white">Details</button>
             </Link>
             <button
               onClick={() => handleRemove(_id)}

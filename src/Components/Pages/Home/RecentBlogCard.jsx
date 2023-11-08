@@ -6,12 +6,15 @@ import { PhotoView } from "react-photo-view";
 const RecentBlogCard = ({ Blog }) => {
   const { user } = useContext(AuthContext);
   const email = user?.email;
+ 
   //console.log(email)
   const { _id, title, category, shortDescription, picture } = Blog;
   const name = title.slice(0, 30);
   const text = shortDescription.slice(0, 70);
+  const blogId = _id;
   const handleWishlist = () => {
     const addBlogWishlist = {
+      blogId,
       email,
       title,
       category,

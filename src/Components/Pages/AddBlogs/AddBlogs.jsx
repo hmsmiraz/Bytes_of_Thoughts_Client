@@ -1,6 +1,9 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AddBlogs = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleAddBlog = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -55,7 +58,7 @@ const AddBlogs = () => {
           event.target.reset();
         }
       });
-    // navigate(location?.state ? location.state : "/");
+    navigate(location?.state ? location.state : "/");
   };
   return (
     <div>

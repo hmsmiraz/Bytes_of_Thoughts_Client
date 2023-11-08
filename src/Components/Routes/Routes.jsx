@@ -20,7 +20,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://bytes-of-thoughts-server.vercel.app/blogs"),
+        loader: () =>
+          fetch("https://bytes-of-thoughts-server.vercel.app/blogs"),
       },
       {
         path: "/addBlogs",
@@ -33,13 +34,20 @@ const router = createBrowserRouter([
       {
         path: "/allBlogs",
         element: <AllBlogs></AllBlogs>,
-        loader: () => fetch("https://bytes-of-thoughts-server.vercel.app/blogs"),
+        loader: () =>
+          fetch("https://bytes-of-thoughts-server.vercel.app/blogs"),
       },
       {
         path: "/allBlogs/:id",
-        element: <PrivateRoutes><BlogDetails></BlogDetails></PrivateRoutes>,
+        element: (
+          <PrivateRoutes>
+            <BlogDetails></BlogDetails>
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
-          fetch(`https://bytes-of-thoughts-server.vercel.app/blogs/${params.id}`),
+          fetch(
+            `https://bytes-of-thoughts-server.vercel.app/blogs/${params.id}`
+          ),
       },
       {
         path: "/blogs/:id",
@@ -49,12 +57,19 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`https://bytes-of-thoughts-server.vercel.app/blogs/${params.id}`),
+          fetch(
+            `https://bytes-of-thoughts-server.vercel.app/blogs/${params.id}`
+          ),
       },
       {
         path: "/featuredBlogs",
-        element: <FeaturedBlogs></FeaturedBlogs>,
-        loader: () => fetch("https://bytes-of-thoughts-server.vercel.app/blogs"),
+        element: (
+          <PrivateRoutes>
+            <FeaturedBlogs></FeaturedBlogs>
+          </PrivateRoutes>
+        ),
+        loader: () =>
+          fetch("https://bytes-of-thoughts-server.vercel.app/blogs"),
       },
       {
         path: "/wishlist",
@@ -63,8 +78,6 @@ const router = createBrowserRouter([
             <Wishlist></Wishlist>
           </PrivateRoutes>
         ),
-        //loader: () => fetch("https://bytes-of-thoughts-server.vercel.app/wishlist"),
-        //loader: ({ params }) => fetch(`https://bytes-of-thoughts-server.vercel.app/blogs/${params.id}`),
       },
       {
         path: "/login",
