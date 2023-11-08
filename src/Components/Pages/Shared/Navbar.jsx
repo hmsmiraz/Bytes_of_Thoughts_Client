@@ -40,9 +40,9 @@ const Navbar = () => {
       <li>
         <Link to={"/wishlist"}>Wishlist</Link>
       </li>
-      <li>
+      {/* <li>
         <Link to={"/register"}>Register</Link>
-      </li>
+      </li> */}
     </>
   );
   return (
