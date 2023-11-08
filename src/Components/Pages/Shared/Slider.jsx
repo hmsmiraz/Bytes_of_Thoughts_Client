@@ -1,6 +1,7 @@
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { motion } from "framer-motion";
+
 const Slider = () => {
   const spanStyle = {
     width: "800px",
@@ -50,7 +51,7 @@ const Slider = () => {
       transition={{
         ease: "linear",
         duration: 2,
-        x: { duration: 1 }
+        x: { duration: 1 },
       }}
     >
       <div className="slide-container my-5">

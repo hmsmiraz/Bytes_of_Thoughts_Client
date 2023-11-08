@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { PhotoView } from "react-photo-view";
 const RecentBlogCard = ({ Blog }) => {
   const { user } = useContext(AuthContext);
   const email = user?.email;
@@ -42,11 +43,13 @@ const RecentBlogCard = ({ Blog }) => {
     <div>
       <div className="card bg-base-100 shadow-xl">
         <figure>
-          <img
-            src={picture}
-            alt="Album"
-            className="h-60 w-72 rounded-xl mt-2"
-          />
+          <PhotoView src={picture} alt="Blog Image">
+            <img
+              src={picture}
+              alt="Album"
+              className="h-60 w-72 rounded-xl mt-2"
+            />
+          </PhotoView>
         </figure>
         <div className="card-body">
           <h2 className="card-title font-bold">{name}...</h2>

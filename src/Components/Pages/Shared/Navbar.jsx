@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import book from "../../../../public/book.svg";
+// import book from "/src/book.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import Swal from "sweetalert2";
@@ -84,7 +84,7 @@ const Navbar = () => {
             </ul>
           </div>
           <img
-            src={book}
+            src="/book.svg"
             alt=""
             className="h-5 w-5 text-center lg:h-10 lg:w-10"
           />

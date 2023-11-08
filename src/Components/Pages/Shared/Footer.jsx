@@ -1,4 +1,4 @@
-import book from "../../../../public/book.svg";
+// import book from "../../../../public/book.svg";
 import { motion } from "framer-motion";
 const Footer = () => {
   return (
@@ -15,7 +15,7 @@ const Footer = () => {
     >
       <footer className="footer items-center p-4 bg-slate-100 text-black-content">
         <aside className="items-center grid-flow-col">
-          <img src={book} alt="" className="h-5 w-5" />
+          <img src="/book.svg" alt="" className="h-5 w-5" />
           <p>Bytes of Thoughts © 2023 - All right reserved</p>
         </aside>
         <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
